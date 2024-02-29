@@ -75,6 +75,8 @@ HTTPサーバーとは、HTTP ( Hypertext Transfer Protocol ) というプロト
 
 ![create-serverjs](assets/05_create-serverjs.png)
 
+**server.js**
+
 ```js
 const port = 8000;
 
@@ -118,6 +120,8 @@ https://docs.deno.com/runtime/manual/basics/permissions
 まず、`public` フォルダを作成し、その中に `index.html` ファイルを作成します。  
 `index.html` には、以下のプログラムを書き込み保存してください。
 
+**index.html**
+
 ```html
 <!DOCTYPE html>
 <html>
@@ -136,6 +140,8 @@ https://docs.deno.com/runtime/manual/basics/permissions
 このHTMLファイルを表示させるためには、`server.js` で下記のように変える必要があります。  
 しかし、このように書く場合はCSSやJSファイル、別ページのHTMLファイルなど、ファイルを追加するたびにサーバーのコードを書き換えなければなりません。  
 
+**server.js**
+
 ```js
 const port = 8000;
 
@@ -151,6 +157,8 @@ Deno.serve({ port }, handler);
 
 これでは非効率的でめんどくさいので、 `public` フォルダの中のファイルを取得して返す、ファイルサーバーとして動作するようにします。  
 `server.js` を下記のコードに置き換えてください。
+
+**server.js**
 
 ```js
 import { serveDir } from "https://deno.land/std@0.217.0/http/file_server.ts"
@@ -180,6 +188,8 @@ deno run -A --watch server.js
 これで `public` フォルダの中身が帰ってくるファイルサーバーを構築することができました。  
 試しにCSSを追加してみましよう。`public` フォルダ内に `styles.css` を追加します。
 
+**styles.css**
+
 ```css
 body {
     background: skyblue;
@@ -187,6 +197,8 @@ body {
 ```
 
 `index.html` で `styles.css` を参照するようにします。
+
+**index.html**
 
 ```html
 <!DOCTYPE html>
